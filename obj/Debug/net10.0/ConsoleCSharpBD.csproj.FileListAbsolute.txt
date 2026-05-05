@@ -278,3 +278,4 @@ c:\Users\rbueno\Desktop\ConsoleCSharp cont\ConsoleCSharp cont\obj\Debug\net10.0\
 c:\Users\rbueno\Desktop\ConsoleCSharp cont\ConsoleCSharp cont\obj\Debug\net10.0\ConsoleCSharpBD.pdb
 c:\Users\rbueno\Desktop\ConsoleCSharp cont\ConsoleCSharp cont\obj\Debug\net10.0\ConsoleCSharpBD.genruntimeconfig.cache
 c:\Users\rbueno\Desktop\ConsoleCSharp cont\ConsoleCSharp cont\obj\Debug\net10.0\ref\ConsoleCSharpBD.dll
+c:\Users\rbueno\Desktop\ConsoleCSharp cont\ConsoleCSharp cont\obj\Debug\net10.0\ConsoleCSharpBD.sourcelink.json

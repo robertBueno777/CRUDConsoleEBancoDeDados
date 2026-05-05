@@ -23,7 +23,7 @@ namespace ConsoleContexto
                     switch (numeroOpcao)
                     {
                         case 1:
-                            Metodos.CadastroUsuario();
+                            UsuarioAplicacao.ReceberDadosDoUsuario();
                             break;
                         case 2:
                             Metodos.ApagarUsuario();
