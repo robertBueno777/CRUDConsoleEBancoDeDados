@@ -76,11 +76,9 @@ public class UsuarioServico : BancoContexto
         UsuarioRepositorio.ApagarUsuario(usuarioASerApagado);
         System.Console.WriteLine("Exclusão feita com sucesso!");
     }
-    public static void MostrarUsuario()
+    public static void MostrarUsuario(string nome)
     {
         var exibirInfo = new ExibicaoUsuario();
-        System.Console.WriteLine("digite o nome do usuario desejado....");
-        string nome = Console.ReadLine();
         var usuario = UsuarioRepositorio.BuscarNoBancoPorNome(nome);
         if (usuario == null)
         {

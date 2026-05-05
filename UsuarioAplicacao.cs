@@ -45,4 +45,19 @@ public class UsuarioAplicacao
         UsuarioServico.EditarUsuario(usuario);
         UsuarioServico.MensagemFinal();
     }
+
+    public static void MostrarUsuario()
+    {
+        System.Console.WriteLine("digite o nome do usuario desejado....");
+        string nome = Console.ReadLine();
+        UsuarioServico.ErroNomeNuloOuNaoExistenteNoBanco(nome);
+        UsuarioServico.MostrarUsuario(nome);
+        UsuarioServico.MensagemFinal();
+    }
+
+    public static void MostrarTodosUsuarios()
+    {
+        UsuarioServico.MostrarTodosUsuarios();
+        UsuarioServico.MensagemFinal();
+    }
 }

@@ -35,7 +35,13 @@ public class UsuarioRepositorio
     {
         var db = new BancoContexto();
         db.Update(usuario);
-        db.SaveChanges();
+        SalvarMudancas();
+    }
+    public List<Usuario> ListaUsuarios()
+    {
+        var db = new BancoContexto();
+        var listaUsuarios = db.Usuarios.ToList();
+        return listaUsuarios;
     }
 
 }
