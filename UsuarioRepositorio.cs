@@ -13,7 +13,7 @@ public class UsuarioRepositorio
     {
         var db = new BancoContexto();
         db.Add(usuario);
-        SalvarMudancas();
+        db.SaveChanges();
     }
     public static void ApagarUsuario(Usuario usuario)
     {
@@ -37,7 +37,7 @@ public class UsuarioRepositorio
         db.Update(usuario);
         SalvarMudancas();
     }
-    public List<Usuario> ListaUsuarios()
+    public static List<Usuario> ListaUsuarios()
     {
         var db = new BancoContexto();
         var listaUsuarios = db.Usuarios.ToList();

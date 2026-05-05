@@ -68,7 +68,6 @@ public class UsuarioServico : BancoContexto
             return;
         }
     }
-
     public static void ApagarUsuario(string nome)
     {
         ErroNomeNuloOuNaoExistenteNoBanco(nome);
@@ -80,24 +79,15 @@ public class UsuarioServico : BancoContexto
     {
         var exibirInfo = new ExibicaoUsuario();
         var usuario = UsuarioRepositorio.BuscarNoBancoPorNome(nome);
-        if (usuario == null)
-        {
-            System.Console.WriteLine("digite um nome válido, por favor.");
-            return;
-        }
         exibirInfo.ExibirInformacoes(usuario);
-        MensagemFinal();
     }
     public static void MostrarTodosUsuarios()
     {
-        var db = new BancoContexto();
         var exibirInfo = new ExibicaoListaUsuario();
-        var listaUsuarios = db.Usuarios.ToList();
-        foreach (var usuario in listaUsuarios)
+        foreach (var usuario in UsuarioRepositorio.ListaUsuarios())
         {
             exibirInfo.ExibirInformacoes(usuario);
         }
-        MensagemFinal();
     }
     public static bool UsuarioJaExiste(string nomeUsuario)//estudar mais esse metodo
     {
@@ -158,30 +148,6 @@ public class UsuarioServico : BancoContexto
         UsuarioRepositorio.EditarUsuario(usuario);
         System.Console.WriteLine("Edição concluida...");
     }
-    public static bool VerificarSeNomeExisteNoBanco(string nome)
-    {
-        if (string.IsNullOrEmpty(nome))
-        {
-            System.Console.WriteLine("nome nulo não cadastrado no banco.");
-            System.Console.WriteLine("pressiona qualquer tecla para tentar novamente....");
-            System.Console.ReadLine();
-            return false;
-        }
-        else if (UsuarioJaExiste(nome) == false)
-        {
-            System.Console.WriteLine("nome não encontrado no banco.");
-            System.Console.WriteLine("pressiona qualquer tecla para tentar novamente....");
-            Console.ReadLine();
-            return false;
-        }
-        return true;
-    }
-    public static void CadastroUsuario()
-    {
-        var metodos = new Metodos();
-        metodos.CadastrarUsuarios();
-        MensagemFinal();
-    }
 
     public static void MostrarInterface()
     {
@@ -195,7 +161,6 @@ public class UsuarioServico : BancoContexto
         System.Console.WriteLine("===============================");
         System.Console.WriteLine("digite a opção desejada....");
     }
-
 }
 
 

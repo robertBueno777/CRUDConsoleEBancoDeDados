@@ -11,12 +11,11 @@ namespace ConsoleContexto
     {
         static void Main(string[] args)
         {
-            var metodos = new Metodos();
             int numeroOpcao = 0;
             List<int> opcoes = new List<int>() { 1, 2, 3, 4, 5, 6 };
             while (numeroOpcao != 6)
             {
-                Metodos.MostrarInterface();
+                UsuarioServico.MostrarInterface();
                 try
                 {
                     numeroOpcao = int.Parse(Console.ReadLine());
@@ -32,10 +31,10 @@ namespace ConsoleContexto
                             UsuarioAplicacao.EditarUsuario();
                             break;
                         case 4:
-                            Metodos.MostrarUsuario();
+                            UsuarioAplicacao.MostrarUsuario();
                             break;
                         case 5:
-                            Metodos.MostrarTodosUsuarios();
+                            UsuarioAplicacao.MostrarTodosUsuarios();
                             break;
                         case 6:
                             System.Console.WriteLine("saindo....");

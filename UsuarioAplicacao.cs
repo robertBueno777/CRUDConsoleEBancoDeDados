@@ -42,6 +42,9 @@ public class UsuarioAplicacao
         usuario.Endereco.Rua = Console.ReadLine();
         System.Console.WriteLine("escolha novo número da casa..");
         usuario.Endereco.NumeroDaCasa = Console.ReadLine();
+
+        if(UsuarioServico.ValidarUsuario(usuario) == false)
+            return;
         UsuarioServico.EditarUsuario(usuario);
         UsuarioServico.MensagemFinal();
     }
