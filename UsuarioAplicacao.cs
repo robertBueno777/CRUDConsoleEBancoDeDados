@@ -7,7 +7,13 @@ public class UsuarioAplicacao
         System.Console.WriteLine("Informe aqui seu Nome...");
         usuario.Nome = Console.ReadLine();
         System.Console.WriteLine("informe aqui sua idade...");
-        usuario.Idade = int.Parse(Console.ReadLine());
+        int numero;
+        while(!int.TryParse(Console.ReadLine(), out numero))
+        {
+            System.Console.WriteLine("ERRO: coloque somente numeros de 0 a 100");
+            System.Console.WriteLine("Tente novamente");
+        }
+        usuario.Idade = numero;
         System.Console.WriteLine("Informe o cep..");
         usuario.Endereco.Cep = Console.ReadLine();
         System.Console.WriteLine("informe a rua..");
@@ -18,7 +24,7 @@ public class UsuarioAplicacao
         UsuarioServico.MensagemFinal();
     }
 
-    public static void ApagarUsuario()//polish
+    public static void ApagarUsuario()
     {
         System.Console.WriteLine("Informe o nome do usuario...");
         string nome = Console.ReadLine();

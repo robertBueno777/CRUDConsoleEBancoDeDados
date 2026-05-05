@@ -3,11 +3,6 @@ using Microsoft.EntityFrameworkCore;
 
 public class UsuarioRepositorio
 {        
-    public static void SalvarMudancas()
-    {
-        var db = new BancoContexto();
-        db.SaveChanges();
-    }
 
     public static void SalvarNovoUsuarioNoBanco(Usuario usuario)
     {
@@ -19,7 +14,7 @@ public class UsuarioRepositorio
     {
         var db = new BancoContexto();
         db.Remove(usuario);
-        SalvarMudancas();
+        db.SaveChanges();
     }
     public static Usuario BuscarNoBancoPorNome(string nome)
     {
@@ -35,7 +30,7 @@ public class UsuarioRepositorio
     {
         var db = new BancoContexto();
         db.Update(usuario);
-        SalvarMudancas();
+        db.SaveChanges();
     }
     public static List<Usuario> ListaUsuarios()
     {

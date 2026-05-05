@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ConsoleCSharpBD")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+960cfcebcd500de9a0a4e611afadc7ca0870505d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bbfea32341be4e775733b30de6ed8c2d7856e18b")]
 [assembly: System.Reflection.AssemblyProductAttribute("ConsoleCSharpBD")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ConsoleCSharpBD")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
