@@ -1,4 +1,5 @@
-using System.Linq;
+
+using Microsoft.EntityFrameworkCore;
 
 public class UsuarioRepositorio
 {        
@@ -29,6 +30,12 @@ public class UsuarioRepositorio
             usuario = db.Usuarios.Include(u => u.Endereco).Where(u => u.Nome.ToLower() == nome).FirstOrDefault( u => u.Nome.ToLower() == nome);
         }
         return usuario;
+    }
+    public static void EditarUsuario(Usuario usuario)
+    {
+        var db = new BancoContexto();
+        db.Update(usuario);
+        db.SaveChanges();
     }
 
 }
