@@ -25,12 +25,12 @@ public class UsuarioServico : BancoContexto
             System.Console.WriteLine($"ERRO: Campo nome nulo ou vazio");
             return false;
         }
-        if (UsuarioServico.UsuarioJaExiste(usuario.Nome))
+        if (UsuarioJaExiste(usuario.Nome))
         {
             System.Console.WriteLine($"ERRO: Ja existe um usuario com esse nome");
             return false;
         }
-        if (usuario.Idade <= 0 || usuario.Idade > 120)
+        if (usuario.Idade <= 0 || usuario.Idade > 100)
         {
             System.Console.WriteLine($"ERRO: coloque uma idade real");
             return false;
@@ -50,6 +50,7 @@ public class UsuarioServico : BancoContexto
             System.Console.WriteLine($"ERRO: Campo Numero da casa nulo ou vazio");
             return false;
         }
+
         System.Console.WriteLine("Usuário validado.");
         return true;
     }
@@ -91,7 +92,7 @@ public class UsuarioServico : BancoContexto
     }
     public static bool UsuarioJaExiste(string nomeUsuario)//estudar mais esse metodo
     {
-        return new BancoContexto().Usuarios.Any(u => u.Nome.Equals(nomeUsuario));
+        return new BancoContexto().Usuarios.Any(u => u.Nome.Equals(nomeUsuario)) || new BancoContexto().Usuarios.Any(u => u.Nome.ToLower().Equals(nomeUsuario)) ;
     }
     public interface IInterfaceExibir
     {
