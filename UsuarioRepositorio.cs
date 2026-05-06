@@ -2,8 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 
 public class UsuarioRepositorio
-{        
-
+{
     public static void SalvarNovoUsuarioNoBanco(Usuario usuario)
     {
         var db = new BancoContexto();
@@ -20,9 +19,9 @@ public class UsuarioRepositorio
     {
         var db = new BancoContexto();
         var usuario = db.Usuarios.Include(u => u.Endereco).FirstOrDefault(u => u.Nome == nome);
-        if(usuario == null)
+        if (usuario == null)
         {
-            usuario = db.Usuarios.Include(u => u.Endereco).Where(u => u.Nome.ToLower() == nome).FirstOrDefault( u => u.Nome.ToLower() == nome);
+            usuario = db.Usuarios.Include(u => u.Endereco).Where(u => u.Nome.ToLower() == nome).FirstOrDefault(u => u.Nome.ToLower() == nome);
         }
         return usuario;
     }
@@ -38,5 +37,4 @@ public class UsuarioRepositorio
         var listaUsuarios = db.Usuarios.ToList();
         return listaUsuarios;
     }
-
 }

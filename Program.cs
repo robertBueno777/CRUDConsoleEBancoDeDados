@@ -12,29 +12,29 @@ namespace ConsoleContexto
         static void Main(string[] args)
         {
             int numeroOpcao = 0;
-            List<int> opcoes = new List<int>() { 1, 2, 3, 4, 5, 6 };
             while (numeroOpcao != 6)
             {
-                UsuarioServico.MostrarInterface();
+                var usuarioAplicacao = new UsuarioAplicacao();
+                usuarioAplicacao.MostrarInterface();
                 try
                 {
                     numeroOpcao = int.Parse(Console.ReadLine());
                     switch (numeroOpcao)
                     {
                         case 1:
-                            UsuarioAplicacao.ReceberDadosDoUsuarioECadastrar();
+                            usuarioAplicacao.ReceberDadosDoUsuarioECadastrar();
                             break;
                         case 2:
-                            UsuarioAplicacao.ApagarUsuario();
+                            usuarioAplicacao.ApagarUsuario();
                             break;
                         case 3:
-                            UsuarioAplicacao.EditarUsuario();
+                            usuarioAplicacao.EditarUsuario();
                             break;
                         case 4:
-                            UsuarioAplicacao.MostrarUsuario();
+                            usuarioAplicacao.MostrarUsuario();
                             break;
                         case 5:
-                            UsuarioAplicacao.MostrarTodosUsuarios();
+                            usuarioAplicacao.MostrarTodosUsuarios();
                             break;
                         case 6:
                             System.Console.WriteLine("saindo....");
