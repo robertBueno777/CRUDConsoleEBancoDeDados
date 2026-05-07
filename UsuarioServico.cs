@@ -10,9 +10,10 @@ public class UsuarioServico
     }
     public bool CadastrarUsuarios(Usuario usuario)
     {
+        var usuarioRepositorio = new UsuarioRepositorio();
         if (UsuarioEhValido(usuario) == false)
             return false;
-        UsuarioRepositorio.SalvarNovoUsuarioNoBanco(usuario);
+        usuarioRepositorio.SalvarNovoUsuarioNoBanco(usuario);
         return true;
     }
     public bool UsuarioEhValido(Usuario usuario)
@@ -46,10 +47,10 @@ public class UsuarioServico
         return usuario;
     }
     public void ApagarUsuario(string nome)
-    {
+    {  
         var usuarioRepositorio = new UsuarioRepositorio();
         var usuarioASerApagado = usuarioRepositorio.BuscarNoBancoPorNome(nome);
-        UsuarioRepositorio.ApagarUsuario(usuarioASerApagado);
+        usuarioRepositorio.ApagarUsuario(usuarioASerApagado);
     }
     public Usuario MostrarUsuario(string nome)
     {
@@ -59,7 +60,8 @@ public class UsuarioServico
     }
     public List<Usuario> MostrarTodosUsuarios()
     {
-        List<Usuario> listaUsuarios = UsuarioRepositorio.ListaUsuarios();
+        var usuarioRepositorio = new UsuarioRepositorio();
+        List<Usuario> listaUsuarios = usuarioRepositorio.ListaUsuarios();
         return listaUsuarios;
     }
     public bool UsuarioJaExiste(string nomeUsuario)//estudar mais esse metodo
@@ -68,7 +70,8 @@ public class UsuarioServico
     }
     public void EditarUsuario(Usuario usuario)
     {
-        UsuarioRepositorio.EditarUsuario(usuario);
+        var usuarioRepositorio = new UsuarioRepositorio();
+        usuarioRepositorio.EditarUsuario(usuario);
     }
 }
 

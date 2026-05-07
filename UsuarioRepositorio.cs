@@ -3,13 +3,13 @@ using Microsoft.EntityFrameworkCore;
 
 public class UsuarioRepositorio
 {
-    public static void SalvarNovoUsuarioNoBanco(Usuario usuario)
+    public void SalvarNovoUsuarioNoBanco(Usuario usuario)
     {
         var db = new BancoContexto();
         db.Add(usuario);
         db.SaveChanges();
     }
-    public static void ApagarUsuario(Usuario usuario)
+    public void ApagarUsuario(Usuario usuario)
     {
         var db = new BancoContexto();
         db.Remove(usuario);
@@ -25,13 +25,13 @@ public class UsuarioRepositorio
         }
         return usuario;
     }
-    public static void EditarUsuario(Usuario usuario)
+    public void EditarUsuario(Usuario usuario)
     {
         var db = new BancoContexto();
         db.Update(usuario);
         db.SaveChanges();
     }
-    public static List<Usuario> ListaUsuarios()
+    public List<Usuario> ListaUsuarios()
     {
         var db = new BancoContexto();
         var listaUsuarios = db.Usuarios.ToList();
