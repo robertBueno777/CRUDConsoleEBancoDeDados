@@ -121,23 +121,23 @@ public class UsuarioAplicacao
     {
         public void ExibirInformacoes(Usuario usuario)
         {
-            var usuarioRepositorio = new UsuarioRepositorio();
-            var novoUsuario = usuarioRepositorio.BuscarNoBancoPorNome(usuario.Nome);
-            System.Console.WriteLine($"ID: {novoUsuario.Id}");
-            System.Console.WriteLine($"NOME: {novoUsuario.Nome}");
-            System.Console.WriteLine($"IDADE: {novoUsuario.Idade}");
+            var usuarioServico = new UsuarioServico();
+            var usuarioRepo = usuarioServico.ConexaoRepositorio().BuscarNoBancoPorNome(usuario.Nome);
+            System.Console.WriteLine($"ID: {usuarioRepo.Id}");
+            System.Console.WriteLine($"NOME: {usuarioRepo.Nome}");
+            System.Console.WriteLine($"IDADE: {usuarioRepo.Idade}");
             if (VerificarSePossuiEndereço(usuario) == false)
                 return;
-            System.Console.WriteLine($"CEP: {novoUsuario.Endereco.Cep}");
-            System.Console.WriteLine($"RUA: {novoUsuario.Endereco.Rua}");
-            System.Console.WriteLine($"NUMERO DA CASA: {novoUsuario.Endereco.NumeroDaCasa}");
+            System.Console.WriteLine($"CEP: {usuarioRepo.Endereco.Cep}");
+            System.Console.WriteLine($"RUA: {usuarioRepo.Endereco.Rua}");
+            System.Console.WriteLine($"NUMERO DA CASA: {usuarioRepo.Endereco.NumeroDaCasa}");
             System.Console.WriteLine("===========================");
         }
     }
     public static bool VerificarSePossuiEndereço(Usuario usuario)
     {
-        var usuarioRepositorio = new UsuarioRepositorio();
-        var usuarioASerBuscado = usuarioRepositorio.BuscarNoBancoPorNome(usuario.Nome);
+        var usuarioServico = new UsuarioServico();
+        var usuarioASerBuscado = usuarioServico.ConexaoRepositorio().BuscarNoBancoPorNome(usuario.Nome);
         if (string.IsNullOrEmpty(usuarioASerBuscado.Endereco.Cep) == true)
         {
             System.Console.WriteLine($"CEP: CEP NAO ENCONTRADO.");

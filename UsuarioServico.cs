@@ -16,6 +16,11 @@ public class UsuarioServico
         usuarioRepositorio.SalvarNovoUsuarioNoBanco(usuario);
         return true;
     }
+    public UsuarioRepositorio ConexaoRepositorio()
+    {
+        var usuarioRepositorio = new UsuarioRepositorio();
+        return usuarioRepositorio;
+    }
     public bool UsuarioEhValido(Usuario usuario)
     {
         if (string.IsNullOrEmpty(usuario.Nome.Trim()))
