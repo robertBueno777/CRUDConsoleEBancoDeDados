@@ -15,7 +15,7 @@ public class UsuarioRepositorio
         db.Remove(usuario);
         db.SaveChanges();
     }
-    public static Usuario BuscarNoBancoPorNome(string nome)
+    public Usuario BuscarNoBancoPorNome(string nome)
     {
         var db = new BancoContexto();
         var usuario = db.Usuarios.Include(u => u.Endereco).FirstOrDefault(u => u.Nome == nome);

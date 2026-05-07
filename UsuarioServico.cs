@@ -1,4 +1,6 @@
 
+using Microsoft.EntityFrameworkCore.Query.Internal;
+
 public class UsuarioServico
 {
     public List<string> MensagensErros { get; set; }
@@ -37,24 +39,28 @@ public class UsuarioServico
         }
         return true;
     }
+    public Usuario RetornarUsuarioDoBanco(string nome)
+    {
+        var usuarioRepositorio = new UsuarioRepositorio();
+        var usuario = usuarioRepositorio.BuscarNoBancoPorNome(nome);
+        return usuario;
+    }
     public void ApagarUsuario(string nome)
     {
-        var usuarioASerApagado = UsuarioRepositorio.BuscarNoBancoPorNome(nome);
+        var usuarioRepositorio = new UsuarioRepositorio();
+        var usuarioASerApagado = usuarioRepositorio.BuscarNoBancoPorNome(nome);
         UsuarioRepositorio.ApagarUsuario(usuarioASerApagado);
     }
-    public void MostrarUsuario(string nome)
+    public Usuario MostrarUsuario(string nome)
     {
-        var exibirInfo = new UsuarioAplicacao.ExibicaoUsuario();
-        var usuario = UsuarioRepositorio.BuscarNoBancoPorNome(nome);
-        exibirInfo.ExibirInformacoes(usuario);
+        var usuarioRepositorio = new UsuarioRepositorio();
+        var usuario = usuarioRepositorio.BuscarNoBancoPorNome(nome);
+        return usuario;
     }
-    public void MostrarTodosUsuarios()
+    public List<Usuario> MostrarTodosUsuarios()
     {
-        var exibirInfo = new UsuarioAplicacao.ExibicaoListaUsuario();
-        foreach (var usuario in UsuarioRepositorio.ListaUsuarios())
-        {
-            exibirInfo.ExibirInformacoes(usuario);
-        }
+        List<Usuario> listaUsuarios = UsuarioRepositorio.ListaUsuarios();
+        return listaUsuarios;
     }
     public bool UsuarioJaExiste(string nomeUsuario)//estudar mais esse metodo
     {

@@ -51,7 +51,7 @@ public class UsuarioAplicacao
             System.Console.WriteLine("ERRO: nome nulo ou não existente no banco.");
             return;
         }
-        var usuario = UsuarioRepositorio.BuscarNoBancoPorNome(nome);
+        var usuario = usuarioServico.RetornarUsuarioDoBanco(nome);
         System.Console.WriteLine("escolha o novo nome do usuario...");
         usuario.Nome = Console.ReadLine();
         System.Console.WriteLine("escolha a idade... ");
@@ -73,18 +73,25 @@ public class UsuarioAplicacao
         System.Console.WriteLine("digite o nome do usuario desejado....");
         string nome = Console.ReadLine();
         UsuarioServico usuarioServico = new UsuarioServico();
-        if (usuarioServico.ErroNomeNuloOuNaoExistenteNoBanco(nome))
+        var usuario = usuarioServico.MostrarUsuario(nome);
+        
+        if (usuarioServico.ErroNomeNuloOuNaoExistenteNoBanco(usuario.Nome) == false)
         {
             System.Console.WriteLine("ERRO: nome nulo ou não existente no banco.");
             return;
         }
-        usuarioServico.MostrarUsuario(nome);
+        var exibirUsuario = new ExibicaoUsuario();
+        exibirUsuario.ExibirInformacoes(usuario);
         MensagemFinal();
     }
     public void MostrarTodosUsuarios()
     {
-        UsuarioServico usuarioServico = new UsuarioServico();
-        usuarioServico.MostrarTodosUsuarios();
+        var usuarioServico = new UsuarioServico();
+        var exibirLista = new ExibicaoListaUsuario();
+        foreach(var usuario in usuarioServico.MostrarTodosUsuarios())
+        {
+            exibirLista.ExibirInformacoes(usuario);
+        }
         MensagemFinal();
     }
     public void MensagemFinal()
@@ -114,7 +121,8 @@ public class UsuarioAplicacao
     {
         public void ExibirInformacoes(Usuario usuario)
         {
-            var novoUsuario = UsuarioRepositorio.BuscarNoBancoPorNome(usuario.Nome);
+            var usuarioRepositorio = new UsuarioRepositorio();
+            var novoUsuario = usuarioRepositorio.BuscarNoBancoPorNome(usuario.Nome);
             System.Console.WriteLine($"ID: {novoUsuario.Id}");
             System.Console.WriteLine($"NOME: {novoUsuario.Nome}");
             System.Console.WriteLine($"IDADE: {novoUsuario.Idade}");
@@ -128,7 +136,8 @@ public class UsuarioAplicacao
     }
     public static bool VerificarSePossuiEndereço(Usuario usuario)
     {
-        var usuarioASerBuscado = UsuarioRepositorio.BuscarNoBancoPorNome(usuario.Nome);
+        var usuarioRepositorio = new UsuarioRepositorio();
+        var usuarioASerBuscado = usuarioRepositorio.BuscarNoBancoPorNome(usuario.Nome);
         if (string.IsNullOrEmpty(usuarioASerBuscado.Endereco.Cep) == true)
         {
             System.Console.WriteLine($"CEP: CEP NAO ENCONTRADO.");
